@@ -44,13 +44,7 @@
                                             <button type="submit" class="btn btn-primary">Register</button>
                                         </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
-                                        <div class="text-center mt-4">
-                                            <button type="submit" class="btn btn-primary">Register</button>
-                                        </div>
-                                </div>
+                                
                             </form>
                         </div>
                     </div>
