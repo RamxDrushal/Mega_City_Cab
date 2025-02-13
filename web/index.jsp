@@ -267,14 +267,14 @@
                     </div>
                 </div>
                 <div class="socail-icons">
-                    <a href="#"><i class="ri-facebook-fill"></i></a>
-                    <a href="#"><i class="ri-instagram-fill"></i></a>
-                    <a href="#"><i class="ri-twitter-fill"></i></a>
-                    <a href="#"><i class="ri-dribbble-line"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-solid fa-basketball"></i></a>
                 </div>
                 
                 <div class="arrow">
-                    <a href="#about"><i class="ri-arrow-down-s-line"></i></a>
+                    <a href="#about"><i class="fa-solid fa-arrow-down-long"></i></a>
                 </div>
             </div>
         </section>
