@@ -257,7 +257,7 @@
             <div class="home-content">
                 <div class="home-text">
                     <h5>Welcome to Mega City Cab </h5>
-                    <h1>Securely Booking your Taxi today <br> From Any Location</h1>
+                    <h1>Securely Booking your Cab today <br> From Any Location</h1>
                 </div>
                 <div class="home-img">
                     <img src="img/home.png">
