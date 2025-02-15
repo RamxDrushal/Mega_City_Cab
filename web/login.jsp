@@ -20,14 +20,35 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="text-center text-success">Login Page</h4>
-                            <form>
+                            <%
+                            String inavlidMsg=(String)session.getAttribute("invalidMsg");
+                                if(inavlidMsg!=null)
+                            {%>
+                            <p class="text-danger text-center"><%=inavlidMsg%></p>
+                            <%
+                            session.removeAttribute("inavlidMsg");
+                            }
+                            %>
+                            
+                            <%
+                            String logMsg =(String)session.getAttribute("logMsg");
+                                if(logMsg!=null)
+                            {%>
+                            <p class="text-success text-center"><%=logMsg%></p>
+                            <%
+                            session.removeAttribute("logMsg");
+                            }
+                            %>
+                            
+                            <form action="login" method="post">
+                                
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">User Name</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
+                                        <input name="password" type="password" class="form-control" id="exampleInputPassword1">
                                         <div class="text-center mt-4">
                                             <button type="submit" class="btn btn-primary">Login</button>
                                         </div>

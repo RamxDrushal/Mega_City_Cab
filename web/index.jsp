@@ -1,3 +1,4 @@
+<%@page import="com.entity.User"%>
 <%@page import="com.conn.DbConnect"%>
 <%@ page import="java.sql.Connection, java.sql.PreparedStatement, java.sql.ResultSet" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
