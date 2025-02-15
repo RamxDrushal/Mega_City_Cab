@@ -1,5 +1,8 @@
+<%@page import="com.conn.DbConnect"%>
+<%@ page import="java.sql.Connection, java.sql.PreparedStatement, java.sql.ResultSet" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -251,7 +254,8 @@
         </style>
     </head>
     <body>
-        <%@include file="component/navbar.jsp" %>      
+        <%@include file="component/navbar.jsp" %>
+
         <!-- home -->
         <section class="home" id="home">
             <div class="home-content">
