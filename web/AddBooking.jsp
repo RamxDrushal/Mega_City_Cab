@@ -7,46 +7,46 @@
         <%@include file="component/allCss.jsp"%>
          <%@include file="component/script.jsp" %>
         <script>
-const locationDistances = {
-    "Bambalapitiya": 1,
-    "Borella": 2,
-    "Cinnamon Gardens": 3,
-    "Fort (Colombo)": 4,
-    "Havelock Town": 5,
-    "Kirulapone": 6,
-    "Kollupitiya": 7,
-    "Kohuwala": 8,
-    "Maradana": 9,
-    "Pettah": 10,
-    "Wellawatte": 11,
-    "Nugegoda": 12,
-    "Rajagiriya": 13,
-    "Dehiwala": 14,
-    "Mount-Lavinia": 15,
-    "Ratmalana": 16,
-    "Battaramulla": 17,
-    "Homagama": 18,
-    "Maharagama": 19,
-    "Moratuwa": 20,
-    "Pannipitiya": 21,
-    "Piliyandala": 22,
-    "Thalawathugoda": 23
-};
+            const locationDistances = {
+                    "Bambalapitiya": 1,
+                    "Borella": 2,
+                    "Cinnamon Gardens": 3,
+                    "Fort (Colombo)": 4,
+                    "Havelock Town": 5,
+                    "Kirulapone": 6,
+                    "Kollupitiya": 7,
+                    "Kohuwala": 8,
+                    "Maradana": 9,
+                    "Pettah": 10,
+                    "Wellawatte": 11,
+                    "Nugegoda": 12,
+                    "Rajagiriya": 13,
+                    "Dehiwala": 14,
+                    "Mount-Lavinia": 15,
+                    "Ratmalana": 16,
+                    "Battaramulla": 17,
+                    "Homagama": 18,
+                    "Maharagama": 19,
+                    "Moratuwa": 20,
+                    "Pannipitiya": 21,
+                    "Piliyandala": 22,
+                    "Thalawathugoda": 23
+                    };
 
-const ratePerDistance = 100; // LKR per distance unit
+            const ratePerDistance = 100; // LKR per distance unit
 
-function filterLocations() {
-    const start = document.getElementById("startLocation").value;
-    const end = document.getElementById("endLocation").value;
+            function filterLocations() {
+            const start = document.getElementById("startLocation").value;
+            const end = document.getElementById("endLocation").value;
 
-    if (start && end && locationDistances[start] && locationDistances[end]) {
-        const distance = Math.abs(locationDistances[start] - locationDistances[end]);
-        const amount = distance * ratePerDistance;
-        document.getElementById("amount").value = amount.toFixed(2);
-    } else {
-        document.getElementById("amount").value = "";
-    }
-}
+            if (start && end && locationDistances[start] && locationDistances[end]) {
+            const distance = Math.abs(locationDistances[start] - locationDistances[end]);
+            const amount = distance * ratePerDistance;
+            document.getElementById("amount").value = amount.toFixed(2);
+            } else {
+                document.getElementById("amount").value = "";
+            }
+        }
         </script>
     </head>
     <body>
@@ -65,27 +65,49 @@ function filterLocations() {
                     <div class="card">
                         <div class="card-body">
                             <h4 class="text-center text-success">Add booking</h4>
-                            <form>
+                             <% 
+                            String sucssMsg = (String) session.getAttribute("succMsg");
+                            String errorMsg = (String) session.getAttribute("failedMsg");
+
+                            // Display success message
+                            if (sucssMsg != null) { 
+                            %>
+                            <p class="text-success text-center"><%= sucssMsg %></p>
+                             <%
+                            session.removeAttribute("succMsg");
+                            }
+                            if (errorMsg != null) { 
+                            %>
+                            <p class="text-danger text-center"><%= errorMsg %></p>
+                            <%
+                            session.removeAttribute("failedMsg");
+                            }
+                            %> 
+                            <!-- Booking Form -->
+                            <form action="addBooking" method="post">
+                                <% if (user != null) { %>
+                                    <input type="hidden" value="<%= user.getID() %>" name="userid">
+                                <% }%>
                                 <div class="form-group">
                                     <label for="name">Enter Name</label>
-                                    <input type="text" class="form-control" id="name">
+                                    <input name="name" type="text" class="form-control" id="name">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email Address</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <input name="email" type="text" class="form-control" id="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="address">Address</label>
-                                    <input type="text" class="form-control" id="address">
+                                    <input name="address" type="text" class="form-control" id="address">
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Enter Phone Number</label>
-                                    <input type="text" class="form-control" id="phone">
+                                    <input name="phno" type="text" class="form-control" id="phone">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="startLocation">Trip Start Location</label>
-                                    <select class="form-control" id="startLocation" onchange="filterLocations()">
+                                    <select name="start" class="form-control" id="startLocation" onchange="filterLocations()">
                                         <option value="">Select Start Location</option>
                                         <option>Bambalapitiya</option>
                                         <option>Borella</option>
@@ -115,7 +137,7 @@ function filterLocations() {
 
                                 <div class="form-group">
                                     <label for="endLocation">Trip End Location</label>
-                                    <select class="form-control" id="endLocation" onchange="filterLocations()">
+                                    <select name="end" class="form-control" id="endLocation" onchange="filterLocations()">
                                         <option value="">Select End Location</option>
                                         <option>Bambalapitiya</option>
                                         <option>Borella</option>
@@ -145,7 +167,7 @@ function filterLocations() {
 
                                 <div class="form-group">
                                     <label for="notes">Notes</label>
-                                    <input type="text" class="form-control" id="notes">
+                                    <input name="about" type="text" class="form-control" id="notes">
                                 </div>
 
                                 <div class="form-group">
