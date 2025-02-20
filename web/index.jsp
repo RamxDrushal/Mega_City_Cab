@@ -220,8 +220,8 @@
             .services-content{
                 display: grid;
                 grid-template-columns: repeat(auto-fill,minmax(300px, auto));
-                gap: 2rem;
-                margin-top: 3rem;
+                gap: 8rem;
+                margin-top: 4rem;
                 text-align: center;
             }
             .s-img{
