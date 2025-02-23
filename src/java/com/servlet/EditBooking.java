@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.servlet;
 
 import com.conn.DbConnect;
@@ -15,13 +11,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/addBooking")
-public class AddBooking extends HttpServlet {
-    
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+@WebServlet("/update")
+public class EditBooking extends HttpServlet {
         
-        int userid =Integer.parseInt(req.getParameter("userid"));
+        @Override
+        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        int cid=Integer.parseInt(req.getParameter("cid"));
         String name=req.getParameter("name");
         String email=req.getParameter("email");
         String address=req.getParameter("address");
@@ -31,17 +27,25 @@ public class AddBooking extends HttpServlet {
         String about=req.getParameter("about");
         String amount=req.getParameter("amount");
         
-        Booking c= new Booking(name, email, address, phno, start, end, about, amount, userid);
+        Booking c= new Booking();
+        c.setId(cid);
+        c.setName(name);
+        c.setEmail(email);
+        c.setAddress(address);
+        c.setPhno(phno);
+        c.setStart(start);
+        c.setEnd(end);
+        c.setAbout(about);
+        c.setAmount(amount);
         BookingDAO dao=new BookingDAO(DbConnect.getConn());
-        
         HttpSession session=req.getSession();
-        boolean f = dao.saveBooking(c);
+        boolean f = dao.updateBooking(c);
         if(f) {
-            session.setAttribute("succMsg", "Your Booking added Successfully..");
-            resp.sendRedirect("AddBooking.jsp");
+            session.setAttribute("succMsg", "Your Booking Updated..");
+            resp.sendRedirect("ManageBooking.jsp");
         } else {
             session.setAttribute("failedMsg", "Your Booking Failed..");
-            resp.sendRedirect("AddBooking.jsp");
+            resp.sendRedirect("editbooking.jsp?cid="+ cid);
         }
-    }
+        }
 }
