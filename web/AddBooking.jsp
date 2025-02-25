@@ -190,7 +190,40 @@
                 font-size: 16px;
                 margin-top: 5px;
             }
-            
+            .alert {
+                border-radius: 8px; /* Rounded corners for better design */
+                padding: 15px; /* Add more padding for better visibility */
+                font-weight: bold;
+                transition: opacity 0.5s ease-in-out; /* Smooth transition for fade-in/out effect */
+            }
+
+            .alert-success {
+                background-color: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+
+            .alert-danger {
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+            }
+
+            .close {
+                font-size: 1.5rem; /* Make the close button larger */
+                color: #000;
+                opacity: 0.5;
+                transition: opacity 0.3s ease;
+            }
+
+            .close:hover {
+                opacity: 1; /* Close button opacity when hovered */
+            }
+
+            /* Add fade-in effect */
+            .alert.fade.show {
+                opacity: 1 !important;
+            }
         </style>
     </head>
     <body>
@@ -210,23 +243,33 @@
                         <div class="card-body">
                             <h4 class="text-center">Add booking</h4>
                              <% 
-                            String sucssMsg = (String) session.getAttribute("succMsg");
-                            String errorMsg = (String) session.getAttribute("failedMsg");
+                                String sucssMsg = (String) session.getAttribute("succMsg");
+                                String errorMsg = (String) session.getAttribute("failedMsg");
 
-                            // Display success message
-                            if (sucssMsg != null) { 
+                                // Display success message
+                                if (sucssMsg != null) { 
                             %>
-                            <p class="text-success text-center"><%= sucssMsg %></p>
-                             <%
-                            session.removeAttribute("succMsg");
-                            }
-                            if (errorMsg != null) { 
-                            %>
-                            <p class="text-danger text-center"><%= errorMsg %></p>
+                                <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                                    <%= sucssMsg %>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                             <%
+                                    session.removeAttribute("succMsg");
+                                    }
+                                    if (errorMsg != null) { 
+                                %>
+                            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                                <%= errorMsg %>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <%
                             session.removeAttribute("failedMsg");
                             }
-                            %> 
+                        %> 
                             <!-- Booking Form -->
                             <form action="addBooking" method="post" onsubmit="return validateForm()">
                                 <% if (user != null) { %>
