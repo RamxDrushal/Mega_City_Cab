@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AdminViewDashboard
-    Created on : Feb 23, 2025, 11:36:51 PM
+    Document   : manageUsers
+    Created on : Feb 25, 2025, 2:53:28 PM
     Author     : ramsh
 --%>
 
@@ -10,10 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <%@include file="component/allCss.jsp"%>
     </head>
     <body>
-        <%@include file="component/adminNavbar.jsp" %>
-        <h1></h1>
+        <h1>Hello World!</h1>
     </body>
 </html>
