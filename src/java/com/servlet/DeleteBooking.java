@@ -1,4 +1,3 @@
-
 package com.servlet;
 
 import com.conn.DbConnect;
@@ -12,7 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/delete")
-public class DeleteContact extends HttpServlet {
+public class DeleteBooking extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -22,7 +22,7 @@
             font-family: 'Poppins', sans-serif;
             position: relative;
         }
-        /* Overlay to improve text readability */
+        
         body::before {
             content: '';
             position: absolute;
@@ -30,18 +30,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+            background: rgba(0, 0, 0, 0.4); 
             z-index: -1;
         }
         .booking-container {
             padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
-            position: relative; /* Ensures content stays above overlay */
+            position: relative; 
             z-index: 1;
         }
         .booking-card {
-            background: rgba(255, 255, 255, 0.95); /* Slightly transparent white for contrast */
+            background: rgba(255, 255, 255, 0.95); 
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             padding: 20px;

@@ -21,14 +21,12 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
 
-        // Check if the user is an admin
         if (email.equals("admin@example.com") && pass.equals("admin123")) {
             session.setAttribute("admin", "true");
             resp.sendRedirect("AdminViewDashboard.jsp");
             return;
         }
 
-        // Normal user authentication
         UserDAO dao = new UserDAO(DbConnect.getConn());
         User u = dao.loginUser(email, pass);
 

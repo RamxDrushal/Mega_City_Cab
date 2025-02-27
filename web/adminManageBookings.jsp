@@ -1,6 +1,6 @@
 <%-- 
-    Document   : manageUsers
-    Created on : Feb 25, 2025, 2:53:28 PM
+    Document   : adminManageBookings
+    Created on : Feb 25, 2025, 10:29:58 PM
     Author     : ramsh
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="component/adminNavbar.jsp" %>
     </body>
 </html>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : manageDrivers
-    Created on : Feb 25, 2025, 2:54:10 PM
+    Document   : adminManageDrivers
+    Created on : Feb 25, 2025, 10:30:11 PM
     Author     : ramsh
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="component/adminNavbar.jsp" %>
     </body>
 </html>

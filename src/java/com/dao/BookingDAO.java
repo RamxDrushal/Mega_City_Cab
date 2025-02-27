@@ -146,5 +146,20 @@ public class BookingDAO {
         }
         return f;
     }
+    
+    public double getTotalBookingAmount() {
+    double totalAmount = 0.0;
+    try {
+        String sql = "SELECT SUM(CAST(amount AS DOUBLE)) FROM booking";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            totalAmount = rs.getDouble(1);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return totalAmount;
+}
             
 }
