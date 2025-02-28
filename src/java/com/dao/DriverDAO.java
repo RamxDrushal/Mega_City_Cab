@@ -50,4 +50,42 @@ public class DriverDAO {
         }
         return drivers;
     }
+    
+    public void addDriver(driver driver) {
+        try {
+            String sql = "INSERT INTO driver (name, car_model, vehicle_number) VALUES (?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, driver.getName());
+            ps.setString(2, driver.getCarModel());
+            ps.setString(3, driver.getVehicleNumber());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void updateDriver(driver driver) {
+        try {
+            String sql = "UPDATE driver SET name=?, car_model=?, vehicle_number=? WHERE id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, driver.getName());
+            ps.setString(2, driver.getCarModel());
+            ps.setString(3, driver.getVehicleNumber());
+            ps.setInt(4, driver.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void deleteDriver(int id) {
+        try {
+            String sql = "DELETE FROM driver WHERE id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
