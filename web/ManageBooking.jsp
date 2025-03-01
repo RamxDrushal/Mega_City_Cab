@@ -1,9 +1,3 @@
-<%--
-    Document   : ManageBooking
-    Created on : Feb 11, 2025, 10:35:49 PM
-    Author     : ramsh
---%>
-
 <%@page import="com.entity.Booking"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dao.BookingDAO"%>
@@ -106,29 +100,24 @@
             margin: 10px auto;
             text-align: center;
             transition: opacity 0.5s ease-in-out;
-    }
-
+        }
         .alert i {
             margin-right: 8px;
             font-size: 20px;
         }
-
         .alert-success {
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
-
         .alert-danger {
             background-color: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
-
         .fade-in {
             animation: fadeIn 0.8s ease-in-out;
         }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -139,8 +128,16 @@
                 transform: translateY(0);
             }
         }
-
-        </style>
+        .status {
+            font-weight: bold;
+        }
+        .status-pending {
+            color: #e67e22;
+        }
+        .status-accepted {
+            color: #27ae60;
+        }
+    </style>
 </head>
 <body>
     <%@include file="component/navbar.jsp" %>
@@ -156,7 +153,6 @@
     String sucssMsg = (String) session.getAttribute("succMsg");
     String errorMsg = (String) session.getAttribute("failedMsg");
     if (sucssMsg != null) {
-    
     %>
     <div class="alert alert-success fade-in" role="alert">
         <i class="fas fa-check-circle"></i> <%= sucssMsg %>
@@ -193,6 +189,7 @@
                     <p><strong>Address:</strong> <%= c.getAddress() %></p>
                     <p><strong>About:</strong> <%= c.getAbout() %></p>
                     <p><strong>Amount:</strong> LKR <%= c.getAmount() %></p>
+                    <p><strong>Status:</strong> <span class="status status-<%= c.getStatus().toLowerCase() %>"><%= c.getStatus() %></span></p>
                     <div class="text-center mt-3">
                         <a href="editbooking.jsp?cid=<%= c.getID() %>" class="btn btn-custom btn-edit text-white">Edit</a> 
                         <a href="delete?cid=<%= c.getID() %>" class="btn btn-custom btn-delete text-white">Delete</a>
@@ -205,6 +202,5 @@
             %>
         </div>
     </div>
-        
 </body>
 </html>
