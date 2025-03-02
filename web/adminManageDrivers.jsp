@@ -1,5 +1,5 @@
 <%@page import="com.dao.DriverDAO"%>
-<%@page import="com.entity.driver"%>
+<%@page import="com.entity.Driver"%>
 <%@page import="com.conn.DbConnect"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -191,7 +191,7 @@
         }
         
         DriverDAO driverDao = new DriverDAO(DbConnect.getConn());
-        List<driver> drivers = driverDao.getAllDrivers();
+        List<Driver> drivers = driverDao.getAllDrivers();
     %>
 
     <div class="container">
@@ -209,7 +209,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(driver d : drivers) { %>
+                <% for(Driver d : drivers) { %>
                 <tr>
                     <td><%= d.getId() %></td>
                     <td><%= d.getName() %></td>

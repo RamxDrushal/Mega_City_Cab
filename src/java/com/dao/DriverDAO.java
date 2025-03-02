@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.entity.driver;
+import com.entity.Driver; // Updated import
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,14 +30,14 @@ public class DriverDAO {
         return count;
     }
 
-    public List<driver> getAllDrivers() {
-        List<driver> drivers = new ArrayList<>();
+    public List<Driver> getAllDrivers() {
+        List<Driver> drivers = new ArrayList<>();
         try {
             String sql = "SELECT * FROM driver";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                driver driver = new driver();
+                Driver driver = new Driver();
                 driver.setId(rs.getInt("id"));
                 driver.setName(rs.getString("name"));
                 driver.setCarModel(rs.getString("car_model"));
@@ -50,7 +50,7 @@ public class DriverDAO {
         return drivers;
     }
     
-    public boolean addDriver(driver driver) {
+    public boolean addDriver(Driver driver) {
         boolean f = false;
         try {
             String sql = "INSERT INTO driver (name, car_model, vehicle_number) VALUES (?, ?, ?)";
@@ -66,7 +66,7 @@ public class DriverDAO {
         return f;
     }
     
-    public boolean updateDriver(driver driver) {
+    public boolean updateDriver(Driver driver) {
         boolean f = false;
         try {
             String sql = "UPDATE driver SET name=?, car_model=?, vehicle_number=? WHERE id=?";
@@ -97,14 +97,13 @@ public class DriverDAO {
         return f;
     }
 
-    // New method to check if a driver exists by ID
     public boolean driverExists(int driverId) {
         try {
             String sql = "SELECT 1 FROM driver WHERE id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, driverId);
             ResultSet rs = ps.executeQuery();
-            return rs.next(); // Returns true if a driver with the given ID exists
+            return rs.next();
         } catch (Exception e) {
             e.printStackTrace();
             return false;

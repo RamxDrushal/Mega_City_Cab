@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Driver - Cab Admin</title>
+    <!-- Your existing CSS remains unchanged -->
+</head>
+<body>
+    <%@include file="component/adminNavbar.jsp" %>
     <style>
         body {
             background: linear-gradient(to bottom, #fff7e6, #ffe6b3);
@@ -108,36 +112,36 @@
             }
         }
     </style>
-</head>
-<body>
-    <%@include file="component/adminNavbar.jsp" %>
-
     <div class="form-container">
         <h2>Add New Driver</h2>
-        <form action="AddDriverServlet" method="post">
+        <form action="AddDriverServlet" method="post" id="driverForm">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required placeholder="Enter driver's name">
+                <span id="name-error" style="color: red; display: none;">Invalid name</span>
             </div>
             <div class="form-group">
                 <label for="carModel">Car Model:</label>
                 <input type="text" id="carModel" name="carModel" required placeholder="Enter car model">
+                <span id="carModel-error" style="color: red; display: none;">Invalid car model</span>
             </div>
             <div class="form-group">
                 <label for="vehicleNumber">Vehicle Number:</label>
                 <input type="text" id="vehicleNumber" name="vehicleNumber" required placeholder="Enter vehicle number">
+                <span id="vehicleNumber-error" style="color: red; display: none;">Invalid vehicle number</span>
             </div>
             <button type="submit" class="submit-btn">Add Driver</button>
         </form>
     </div>
+
     <script>
-        document.getElementById('driverForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (validateForm()) {
-                this.submit();
+        const driverForm = document.getElementById('driverForm');
+        driverForm.addEventListener('submit', function(e) {
+            if (!validateForm()) {
+                e.preventDefault();
             }
         });
-        
+
         const inputs = document.querySelectorAll('input');
         inputs.forEach(input => {
             input.addEventListener('input', function() {
@@ -172,7 +176,7 @@
                     isValid = /^[A-Za-z0-9 -]{2,50}$/.test(value);
                     break;
                 case 'vehicleNumber':
-                    isValid = /^[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{4}$/.test(value);
+                    isValid = /^[A-Za-z0-9-]{2,20}$/.test(value); // Adjusted for vehicle number format
                     break;
             }
 

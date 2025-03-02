@@ -1,13 +1,14 @@
 package com.servlet;
 
 import com.dao.DriverDAO;
-import com.entity.driver;
+import com.entity.Driver;
 import com.conn.DbConnect;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -15,17 +16,26 @@ import java.io.IOException;
 public class EditDriverServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        String carModel = request.getParameter("carModel");
-        String vehicleNumber = request.getParameter("vehicleNumber");
+        HttpSession session = request.getSession();
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            String carModel = request.getParameter("carModel");
+            String vehicleNumber = request.getParameter("vehicleNumber");
 
-        driver driver = new driver(name, carModel, vehicleNumber);
-        driver.setId(id);
-        
-        DriverDAO dao = new DriverDAO(DbConnect.getConn());
-        dao.updateDriver(driver); // Add this method to DriverDAO
-        
+            Driver driver = new Driver(name, carModel, vehicleNumber);
+            driver.setId(id);
+            
+            DriverDAO dao = new DriverDAO(DbConnect.getConn());
+            if (dao.updateDriver(driver)) {
+                session.setAttribute("succMsg", "Driver Updated Successfully");
+            } else {
+                session.setAttribute("failedMsg", "Failed to Update Driver");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.setAttribute("failedMsg", "Error Updating Driver: " + e.getMessage());
+        }
         response.sendRedirect("adminManageDrivers.jsp");
     }
 }

@@ -1,5 +1,5 @@
 <%@page import="com.dao.DriverDAO"%>
-<%@page import="com.entity.driver"%>
+<%@page import="com.entity.Driver"%>
 <%@page import="com.conn.DbConnect"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -117,29 +117,97 @@
     <%
         int id = Integer.parseInt(request.getParameter("id"));
         DriverDAO driverDao = new DriverDAO(DbConnect.getConn());
-        driver d = driverDao.getAllDrivers().stream()
+        Driver d = driverDao.getAllDrivers().stream()
                            .filter(driver -> driver.getId() == id)
                            .findFirst()
                            .orElse(null);
+        if (d == null) {
+            response.sendRedirect("adminManageDrivers.jsp");
+            return;
+        }
     %>
     <div class="form-container">
         <h2>Edit Driver</h2>
-        <form action="EditDriverServlet" method="post">
+        <form action="EditDriverServlet" method="post" id="driverForm">
             <input type="hidden" name="id" value="<%= d.getId() %>">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" value="<%= d.getName() %>" required>
+                <span id="name-error" style="color: red; display: none;">Invalid name</span>
             </div>
             <div class="form-group">
                 <label for="carModel">Car Model:</label>
                 <input type="text" id="carModel" name="carModel" value="<%= d.getCarModel() %>" required>
+                <span id="carModel-error" style="color: red; display: none;">Invalid car model</span>
             </div>
             <div class="form-group">
                 <label for="vehicleNumber">Vehicle Number:</label>
                 <input type="text" id="vehicleNumber" name="vehicleNumber" value="<%= d.getVehicleNumber() %>" required>
+                <span id="vehicleNumber-error" style="color: red; display: none;">Invalid vehicle number</span>
             </div>
             <button type="submit" class="btn-edit">Update Driver</button>
         </form>
     </div>
+
+    <script>
+        const driverForm = document.getElementById('driverForm');
+        driverForm.addEventListener('submit', function(e) {
+            if (!validateForm()) {
+                e.preventDefault();
+            }
+        });
+
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                validateField(this);
+            });
+        });
+
+        function validateForm() {
+            let isValid = true;
+            inputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                }
+            });
+            return isValid;
+        }
+
+        function validateField(input) {
+            const fieldName = input.id;
+            const value = input.value.trim();
+            const errorElement = document.getElementById(`${fieldName}-error`);
+            const formGroup = input.closest('.form-group');
+            let isValid = true;
+
+            formGroup.classList.remove('valid', 'invalid');
+
+            switch(fieldName) {
+                case 'name':
+                    isValid = /^[A-Za-z ]{2,50}$/.test(value);
+                    break;
+                case 'carModel':
+                    isValid = /^[A-Za-z0-9 -]{2,50}$/.test(value);
+                    break;
+                case 'vehicleNumber':
+                    isValid = /^[A-Za-z0-9-]{2,20}$/.test(value);
+                    break;
+            }
+
+            if (value === '') {
+                isValid = false;
+            }
+
+            if (!isValid) {
+                formGroup.classList.add('invalid');
+                errorElement.style.display = 'block';
+            } else {
+                formGroup.classList.add('valid');
+                errorElement.style.display = 'none';
+            }
+            return isValid;
+        }
+    </script>
 </body>
 </html>
