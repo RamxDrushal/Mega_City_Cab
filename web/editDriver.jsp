@@ -1,5 +1,5 @@
 <%@page import="com.dao.DriverDAO"%>
-<%@page import="com.entity.Driver"%>
+<%@page import="com.entity.driver"%>
 <%@page import="com.conn.DbConnect"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -117,7 +117,7 @@
     <%
         int id = Integer.parseInt(request.getParameter("id"));
         DriverDAO driverDao = new DriverDAO(DbConnect.getConn());
-        Driver d = driverDao.getAllDrivers().stream()
+        driver d = driverDao.getAllDrivers().stream()
                            .filter(driver -> driver.getId() == id)
                            .findFirst()
                            .orElse(null);

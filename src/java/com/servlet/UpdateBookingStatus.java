@@ -3,7 +3,7 @@ package com.servlet;
 import com.conn.DbConnect;
 import com.dao.BookingDAO;
 import com.dao.DriverDAO;
-import com.entity.Driver; // Updated import
+import com.entity.driver; // Updated import
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.entity.Driver; // Updated import
+import com.entity.driver; // Updated import
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,14 +30,14 @@ public class DriverDAO {
         return count;
     }
 
-    public List<Driver> getAllDrivers() {
-        List<Driver> drivers = new ArrayList<>();
+    public List<driver> getAllDrivers() {
+        List<driver> drivers = new ArrayList<>();
         try {
             String sql = "SELECT * FROM driver";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Driver driver = new Driver();
+                driver driver = new driver();
                 driver.setId(rs.getInt("id"));
                 driver.setName(rs.getString("name"));
                 driver.setCarModel(rs.getString("car_model"));
@@ -50,7 +50,7 @@ public class DriverDAO {
         return drivers;
     }
     
-    public boolean addDriver(Driver driver) {
+    public boolean addDriver(driver driver) {
         boolean f = false;
         try {
             String sql = "INSERT INTO driver (name, car_model, vehicle_number) VALUES (?, ?, ?)";
@@ -66,7 +66,7 @@ public class DriverDAO {
         return f;
     }
     
-    public boolean updateDriver(Driver driver) {
+    public boolean updateDriver(driver driver) {
         boolean f = false;
         try {
             String sql = "UPDATE driver SET name=?, car_model=?, vehicle_number=? WHERE id=?";

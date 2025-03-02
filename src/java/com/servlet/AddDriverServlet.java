@@ -22,7 +22,7 @@ public class AddDriverServlet extends HttpServlet {
             String carModel = request.getParameter("carModel");
             String vehicleNumber = request.getParameter("vehicleNumber");
 
-            Driver driver = new Driver(name, carModel, vehicleNumber);
+            driver driver = new driver(name, carModel, vehicleNumber);
             DriverDAO dao = new DriverDAO(DbConnect.getConn());
             
             if (dao.addDriver(driver)) {

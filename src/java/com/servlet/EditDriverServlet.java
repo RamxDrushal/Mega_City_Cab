@@ -1,7 +1,7 @@
 package com.servlet;
 
 import com.dao.DriverDAO;
-import com.entity.Driver;
+import com.entity.driver;
 import com.conn.DbConnect;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,7 +23,7 @@ public class EditDriverServlet extends HttpServlet {
             String carModel = request.getParameter("carModel");
             String vehicleNumber = request.getParameter("vehicleNumber");
 
-            Driver driver = new Driver(name, carModel, vehicleNumber);
+            driver driver = new driver(name, carModel, vehicleNumber);
             driver.setId(id);
             
             DriverDAO dao = new DriverDAO(DbConnect.getConn());
