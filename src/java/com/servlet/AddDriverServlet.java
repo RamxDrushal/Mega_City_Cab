@@ -1,7 +1,7 @@
 package com.servlet;
 
 import com.dao.DriverDAO;
-import com.entity.Driver;
+import com.entity.driver;
 import com.conn.DbConnect;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
