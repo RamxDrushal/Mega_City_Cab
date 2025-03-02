@@ -179,9 +179,13 @@
                 
                 for (Booking c : booking) {
                     String driverName = "Not Assigned";
+                    String driverPhoneNumber = "Not Available";
                     if ("Accepted".equals(c.getStatus()) && c.getDriverId() != null) {
-                        driverName = dao.getDriverNameByDriverId(c.getDriverId());
-                        if (driverName == null) {
+                        String[] driverDetails = dao.getDriverDetailsByDriverId(c.getDriverId());
+                        if (driverDetails != null) {
+                            driverName = driverDetails[0];
+                            driverPhoneNumber = driverDetails[1];
+                        } else {
                             driverName = "Driver Not Found";
                         }
                     }
@@ -199,6 +203,7 @@
                     <p><strong>Status:</strong> <span class="status status-<%= c.getStatus().toLowerCase() %>"><%= c.getStatus() %></span></p>
                     <% if ("Accepted".equals(c.getStatus())) { %>
                         <p><strong>Driver:</strong> <%= driverName %></p>
+                        <p><strong>Driver Contact:</strong> <%= driverPhoneNumber %></p>
                     <% } %>
                     <div class="text-center mt-3">
                         <a href="editbooking.jsp?cid=<%= c.getID() %>" class="btn btn-custom btn-edit text-white">Edit</a> 

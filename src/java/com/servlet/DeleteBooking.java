@@ -15,17 +15,16 @@ public class DeleteBooking extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int cid=Integer.parseInt(req.getParameter("cid"));
+        int cid = Integer.parseInt(req.getParameter("cid"));
         
-        BookingDAO dao=new BookingDAO(DbConnect.getConn());
+        BookingDAO dao = new BookingDAO(DbConnect.getConn());
         
-        boolean f=dao.deleteBookingById(cid);
-        HttpSession session=req.getSession();
-        if(f)
-        {
-            session.setAttribute("succMsg", "Booking Delete Succssfully..");
+        boolean f = dao.deleteBookingById(cid);
+        HttpSession session = req.getSession();
+        if (f) {
+            session.setAttribute("succMsg", "Booking Deleted Successfully.."); // Fixed typo
             resp.sendRedirect("ManageBooking.jsp");
-        }else {
+        } else {
             session.setAttribute("failedMsg", "Something wrong on server..");
             resp.sendRedirect("ManageBooking.jsp");
         }

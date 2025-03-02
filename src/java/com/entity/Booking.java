@@ -13,12 +13,13 @@ public class Booking {
     private int userid;
     private String status;
     private Integer driverId; // Store the driver ID (nullable)
+    private String driverPhoneNumber; // New field for driver phone number
 
     public Booking() {
         super();
     }
 
-    public Booking(String name, String email, String address, String phno, String start, String end, String about, String amount, int userid, String status, Integer driverId) {
+    public Booking(String name, String email, String address, String phno, String start, String end, String about, String amount, int userid, String status, Integer driverId, String driverPhoneNumber) {
         super();
         this.name = name;
         this.email = email;
@@ -31,9 +32,10 @@ public class Booking {
         this.userid = userid;
         this.status = status;
         this.driverId = driverId;
+        this.driverPhoneNumber = driverPhoneNumber;
     }
 
-    // Existing getters and setters
+    // Existing getters and setters...
     public int getID() { return id; }
     public void setId(int id) { this.id = id; }
     public String getName() { return name; }
@@ -58,4 +60,8 @@ public class Booking {
     public void setStatus(String status) { this.status = status; }
     public Integer getDriverId() { return driverId; }
     public void setDriverId(Integer driverId) { this.driverId = driverId; }
+    
+    // New getter and setter for driver phone number
+    public String getDriverPhoneNumber() { return driverPhoneNumber; }
+    public void setDriverPhoneNumber(String driverPhoneNumber) { this.driverPhoneNumber = driverPhoneNumber; }
 }

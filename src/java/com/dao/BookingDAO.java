@@ -63,6 +63,13 @@ public class BookingDAO {
                 c.setUserid(rs.getInt(10));
                 c.setStatus(rs.getString(11));
                 c.setDriverId(rs.getObject(12) != null ? rs.getInt(12) : null);
+                // Fetch driver phone number if driverId exists
+                if (c.getDriverId() != null) {
+                    String[] driverDetails = getDriverDetailsByDriverId(c.getDriverId());
+                    if (driverDetails != null) {
+                        c.setDriverPhoneNumber(driverDetails[1]);
+                    }
+                }
                 list.add(c);
             }
         } catch (Exception e) {
@@ -91,6 +98,13 @@ public class BookingDAO {
                 c.setUserid(rs.getInt(10));
                 c.setStatus(rs.getString(11));
                 c.setDriverId(rs.getObject(12) != null ? rs.getInt(12) : null);
+                // Fetch driver phone number if driverId exists
+                if (c.getDriverId() != null) {
+                    String[] driverDetails = getDriverDetailsByDriverId(c.getDriverId());
+                    if (driverDetails != null) {
+                        c.setDriverPhoneNumber(driverDetails[1]);
+                    }
+                }
                 list.add(c);
             }
         } catch (Exception e) {
@@ -118,6 +132,13 @@ public class BookingDAO {
                 c.setUserid(rs.getInt(10));
                 c.setStatus(rs.getString(11));
                 c.setDriverId(rs.getObject(12) != null ? rs.getInt(12) : null);
+                // Fetch driver phone number if driverId exists
+                if (c.getDriverId() != null) {
+                    String[] driverDetails = getDriverDetailsByDriverId(c.getDriverId());
+                    if (driverDetails != null) {
+                        c.setDriverPhoneNumber(driverDetails[1]);
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -202,21 +223,28 @@ public class BookingDAO {
         return totalAmount;
     }
 
-    // Fetch driver name by driver ID
-    public String getDriverNameByDriverId(Integer driverId) {
+    // Fetch driver details (name and phone number) by driver ID
+    public String[] getDriverDetailsByDriverId(Integer driverId) {
         if (driverId == null) return null;
-        String driverName = null;
+        String[] driverDetails = new String[2]; // [0] = name, [1] = phone number
         try {
-            String sql = "SELECT name FROM driver WHERE id=?";
+            String sql = "SELECT name, phone_number FROM driver WHERE id=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, driverId);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                driverName = rs.getString("name");
+                driverDetails[0] = rs.getString("name");
+                driverDetails[1] = rs.getString("phone_number");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return driverName;
+        return driverDetails;
+    }
+
+    // Single method for backward compatibility
+    public String getDriverNameByDriverId(Integer driverId) {
+        String[] details = getDriverDetailsByDriverId(driverId);
+        return details != null ? details[0] : null;
     }
 }

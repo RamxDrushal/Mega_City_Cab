@@ -205,7 +205,6 @@
                     <th>Name</th>
                     <th>Car Model</th>
                     <th>Vehicle Number</th>
-                    <th>Phone Number</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -216,7 +215,6 @@
                     <td><%= d.getName() %></td>
                     <td><%= d.getCarModel() %></td>
                     <td><%= d.getVehicleNumber() %></td>
-                    <td><%= d.getPhoneNumber() != null ? d.getPhoneNumber() : "N/A" %></td>
                     <td>
                         <a href="editDriver.jsp?id=<%= d.getId() %>" class="action-btn edit-btn">Edit</a>
                         <button class="action-btn delete-btn" onclick="showModal('<%= d.getId() %>', '<%= d.getName() %>')">Delete</button>
