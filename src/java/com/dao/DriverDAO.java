@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.entity.driver; // Updated import
+import com.entity.driver;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,6 +42,7 @@ public class DriverDAO {
                 driver.setName(rs.getString("name"));
                 driver.setCarModel(rs.getString("car_model"));
                 driver.setVehicleNumber(rs.getString("vehicle_number"));
+                driver.setPhoneNumber(rs.getString("phone_number")); // New field
                 drivers.add(driver);
             }
         } catch (Exception e) {
@@ -49,15 +50,16 @@ public class DriverDAO {
         }
         return drivers;
     }
-    
+
     public boolean addDriver(driver driver) {
         boolean f = false;
         try {
-            String sql = "INSERT INTO driver (name, car_model, vehicle_number) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO driver (name, car_model, vehicle_number, phone_number) VALUES (?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, driver.getName());
             ps.setString(2, driver.getCarModel());
             ps.setString(3, driver.getVehicleNumber());
+            ps.setString(4, driver.getPhoneNumber()); // New field
             int i = ps.executeUpdate();
             if (i == 1) f = true;
         } catch (Exception e) {
@@ -65,16 +67,17 @@ public class DriverDAO {
         }
         return f;
     }
-    
+
     public boolean updateDriver(driver driver) {
         boolean f = false;
         try {
-            String sql = "UPDATE driver SET name=?, car_model=?, vehicle_number=? WHERE id=?";
+            String sql = "UPDATE driver SET name=?, car_model=?, vehicle_number=?, phone_number=? WHERE id=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, driver.getName());
             ps.setString(2, driver.getCarModel());
             ps.setString(3, driver.getVehicleNumber());
-            ps.setInt(4, driver.getId());
+            ps.setString(4, driver.getPhoneNumber()); // New field
+            ps.setInt(5, driver.getId());
             int i = ps.executeUpdate();
             if (i == 1) f = true;
         } catch (Exception e) {
@@ -82,7 +85,7 @@ public class DriverDAO {
         }
         return f;
     }
-    
+
     public boolean deleteDriver(int id) {
         boolean f = false;
         try {

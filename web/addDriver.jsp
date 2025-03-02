@@ -4,10 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Driver - Cab Admin</title>
-    <!-- Your existing CSS remains unchanged -->
-</head>
-<body>
-    <%@include file="component/adminNavbar.jsp" %>
     <style>
         body {
             background: linear-gradient(to bottom, #fff7e6, #ffe6b3);
@@ -97,7 +93,6 @@
             border-color: #d32f2f;
             box-shadow: 0 0 8px rgba(211, 47, 47, 0.3);
         }
-        /* Animation for form appearance */
         .form-container {
             animation: fadeIn 0.5s ease-out;
         }
@@ -112,6 +107,9 @@
             }
         }
     </style>
+</head>
+<body>
+    <%@include file="component/adminNavbar.jsp" %>
     <div class="form-container">
         <h2>Add New Driver</h2>
         <form action="AddDriverServlet" method="post" id="driverForm">
@@ -129,6 +127,11 @@
                 <label for="vehicleNumber">Vehicle Number:</label>
                 <input type="text" id="vehicleNumber" name="vehicleNumber" required placeholder="Enter vehicle number">
                 <span id="vehicleNumber-error" style="color: red; display: none;">Invalid vehicle number</span>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" required placeholder="Enter phone number">
+                <span id="phoneNumber-error" style="color: red; display: none;">Invalid phone number</span>
             </div>
             <button type="submit" class="submit-btn">Add Driver</button>
         </form>
@@ -176,7 +179,10 @@
                     isValid = /^[A-Za-z0-9 -]{2,50}$/.test(value);
                     break;
                 case 'vehicleNumber':
-                    isValid = /^[A-Za-z0-9-]{2,20}$/.test(value); // Adjusted for vehicle number format
+                    isValid = /^[A-Za-z0-9-]{2,20}$/.test(value);
+                    break;
+                case 'phoneNumber':
+                    isValid = /^[0-9]{10}$/.test(value); // 10-digit phone number
                     break;
             }
 

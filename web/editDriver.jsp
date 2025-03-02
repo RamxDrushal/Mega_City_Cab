@@ -96,7 +96,6 @@
             border-color: #d32f2f;
             box-shadow: 0 0 8px rgba(211, 47, 47, 0.3);
         }
-        /* Animation for form appearance */
         .form-container {
             animation: fadeIn 0.5s ease-out;
         }
@@ -145,6 +144,11 @@
                 <input type="text" id="vehicleNumber" name="vehicleNumber" value="<%= d.getVehicleNumber() %>" required>
                 <span id="vehicleNumber-error" style="color: red; display: none;">Invalid vehicle number</span>
             </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" value="<%= d.getPhoneNumber() %>" required>
+                <span id="phoneNumber-error" style="color: red; display: none;">Invalid phone number</span>
+            </div>
             <button type="submit" class="btn-edit">Update Driver</button>
         </form>
     </div>
@@ -192,6 +196,9 @@
                     break;
                 case 'vehicleNumber':
                     isValid = /^[A-Za-z0-9-]{2,20}$/.test(value);
+                    break;
+                case 'phoneNumber':
+                    isValid = /^[0-9]{10}$/.test(value); // 10-digit phone number
                     break;
             }
 
