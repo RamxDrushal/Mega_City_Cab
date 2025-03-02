@@ -26,7 +26,7 @@ public class AddBooking extends HttpServlet {
         String about = req.getParameter("about");
         String amount = req.getParameter("amount");
         
-        Booking c = new Booking(name, email, address, phno, start, end, about, amount, userid, "Pending"); // Default status
+        Booking c = new Booking(name, email, address, phno, start, end, about, amount, userid, "Pending", null);
         BookingDAO dao = new BookingDAO(DbConnect.getConn());
         
         HttpSession session = req.getSession();

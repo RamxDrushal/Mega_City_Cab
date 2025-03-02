@@ -1,7 +1,7 @@
 <%@page import="com.entity.Booking"%>
-<%@page import="java.util.List"%>
 <%@page import="com.dao.BookingDAO"%>
 <%@page import="com.conn.DbConnect"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -178,6 +178,13 @@
                 List<Booking> booking = dao.getAllContact(user.getID());
                 
                 for (Booking c : booking) {
+                    String driverName = "Not Assigned";
+                    if ("Accepted".equals(c.getStatus()) && c.getDriverId() != null) {
+                        driverName = dao.getDriverNameByDriverId(c.getDriverId());
+                        if (driverName == null) {
+                            driverName = "Driver Not Found";
+                        }
+                    }
             %>
             <div class="col-md-4">
                 <div class="booking-card">
@@ -190,6 +197,9 @@
                     <p><strong>About:</strong> <%= c.getAbout() %></p>
                     <p><strong>Amount:</strong> LKR <%= c.getAmount() %></p>
                     <p><strong>Status:</strong> <span class="status status-<%= c.getStatus().toLowerCase() %>"><%= c.getStatus() %></span></p>
+                    <% if ("Accepted".equals(c.getStatus())) { %>
+                        <p><strong>Driver:</strong> <%= driverName %></p>
+                    <% } %>
                     <div class="text-center mt-3">
                         <a href="editbooking.jsp?cid=<%= c.getID() %>" class="btn btn-custom btn-edit text-white">Edit</a> 
                         <a href="delete?cid=<%= c.getID() %>" class="btn btn-custom btn-delete text-white">Delete</a>

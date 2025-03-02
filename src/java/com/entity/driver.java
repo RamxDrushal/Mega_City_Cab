@@ -1,26 +1,22 @@
 package com.entity;
 
-/**
- *
- * @author ramsh
- */
 public class driver {
     private int id;
     private String name;
     private String carModel;
     private String vehicleNumber;
-    
+
     public driver() {
         super();
     }
-    
+
     public driver(String name, String carModel, String vehicleNumber) {
-        super();
         this.name = name;
         this.carModel = carModel;
         this.vehicleNumber = vehicleNumber;
     }
 
+    // Getters and setters
     public int getId() {
         return id;
     }

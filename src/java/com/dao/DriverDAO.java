@@ -1,4 +1,3 @@
-// DriverDAO.java
 package com.dao;
 
 import com.entity.driver;
@@ -51,20 +50,24 @@ public class DriverDAO {
         return drivers;
     }
     
-    public void addDriver(driver driver) {
+    public boolean addDriver(driver driver) {
+        boolean f = false;
         try {
             String sql = "INSERT INTO driver (name, car_model, vehicle_number) VALUES (?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, driver.getName());
             ps.setString(2, driver.getCarModel());
             ps.setString(3, driver.getVehicleNumber());
-            ps.executeUpdate();
+            int i = ps.executeUpdate();
+            if (i == 1) f = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return f;
     }
     
-    public void updateDriver(driver driver) {
+    public boolean updateDriver(driver driver) {
+        boolean f = false;
         try {
             String sql = "UPDATE driver SET name=?, car_model=?, vehicle_number=? WHERE id=?";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -72,20 +75,39 @@ public class DriverDAO {
             ps.setString(2, driver.getCarModel());
             ps.setString(3, driver.getVehicleNumber());
             ps.setInt(4, driver.getId());
-            ps.executeUpdate();
+            int i = ps.executeUpdate();
+            if (i == 1) f = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return f;
     }
     
-    public void deleteDriver(int id) {
+    public boolean deleteDriver(int id) {
+        boolean f = false;
         try {
             String sql = "DELETE FROM driver WHERE id=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
-            ps.executeUpdate();
+            int i = ps.executeUpdate();
+            if (i == 1) f = true;
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return f;
+    }
+
+    // New method to check if a driver exists by ID
+    public boolean driverExists(int driverId) {
+        try {
+            String sql = "SELECT 1 FROM driver WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, driverId);
+            ResultSet rs = ps.executeQuery();
+            return rs.next(); // Returns true if a driver with the given ID exists
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }
