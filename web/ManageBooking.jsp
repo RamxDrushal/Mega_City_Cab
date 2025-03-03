@@ -200,6 +200,7 @@
                     <p><strong>Address:</strong> <%= c.getAddress() %></p>
                     <p><strong>About:</strong> <%= c.getAbout() %></p>
                     <p><strong>Amount:</strong> LKR <%= c.getAmount() %></p>
+                    <p><strong>Booking Date:</strong> <%= c.getBookingDate() %></p>
                     <p><strong>Status:</strong> <span class="status status-<%= c.getStatus().toLowerCase() %>"><%= c.getStatus() %></span></p>
                     <% if ("Accepted".equals(c.getStatus())) { %>
                         <p><strong>Driver:</strong> <%= driverName %></p>

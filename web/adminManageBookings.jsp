@@ -14,10 +14,10 @@
     <%@include file="component/allCss.jsp"%>
     <style type="text/css">
         body {
-            background: linear-gradient(to bottom, #fff7e6, #ffe6b3);
-            min-height: 100vh;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
+        background: linear-gradient(to bottom, #fff7e6, #ffe6b3);
+        min-height: 100vh;
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
         }
         .container {
             width: 85%;
@@ -27,7 +27,7 @@
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             position: relative;
-            overflow: hidden;
+            overflow-x: auto; /* Enable horizontal scrolling for the container */
         }
         .container::before {
             content: '';
@@ -52,6 +52,7 @@
         }
         table {
             width: 100%;
+            min-width: 1200px; /* Ensure the table has a minimum width to prevent column squeezing */
             border-collapse: collapse;
             margin-top: 30px;
             background: #fff;
@@ -62,6 +63,7 @@
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
+            white-space: nowrap; /* Prevent text wrapping in cells */
         }
         th {
             background: #ffca28;
@@ -216,6 +218,7 @@
                     <th>Start</th>
                     <th>End</th>
                     <th>Amount</th>
+                    <th>Booking Date</th> <!-- New column -->
                     <th>About</th>
                     <th>User ID</th>
                     <th>Status</th>
@@ -224,24 +227,25 @@
             </thead>
             <tbody>
                 <% 
-                    List<Booking> bookings = bookingDao.getAllBookings();
-                    for (Booking c : bookings) {
-                        String assignedDriverName = c.getDriverId() != null ? bookingDao.getDriverNameByDriverId(c.getDriverId()) : null;
-                %>
+        List<Booking> bookings = bookingDao.getAllBookings();
+        for (Booking c : bookings) {
+            String assignedDriverName = c.getDriverId() != null ? bookingDao.getDriverNameByDriverId(c.getDriverId()) : null;
+    %>
                 <tr>
-                    <td><%= c.getID() %></td>
-                    <td><%= c.getName() %></td>
-                    <td><%= c.getEmail() %></td>
-                    <td><%= c.getPhno() %></td>
-                    <td><%= c.getStart() %></td>
-                    <td><%= c.getEnd() %></td>
-                    <td>LKR <%= c.getAmount() %></td>
-                    <td><%= c.getAbout() %></td>
-                    <td><%= c.getUserid() %></td>
-                    <td>
-                        <span class="status status-<%= c.getStatus().toLowerCase() %>"><%= c.getStatus() %></span>
-                    </td>
-                    <td>
+        <td><%= c.getID() %></td>
+        <td><%= c.getName() %></td>
+        <td><%= c.getEmail() %></td>
+        <td><%= c.getPhno() %></td>
+        <td><%= c.getStart() %></td>
+        <td><%= c.getEnd() %></td>
+        <td>LKR <%= c.getAmount() %></td>
+        <td><%= c.getBookingDate() %></td> <!-- New column -->
+        <td><%= c.getAbout() %></td>
+        <td><%= c.getUserid() %></td>
+        <td>
+            <span class="status status-<%= c.getStatus().toLowerCase() %>"><%= c.getStatus() %></span>
+        </td>
+        <td>
                         <% if ("Pending".equals(c.getStatus())) { %>
                             <a href="updateStatus?cid=<%= c.getID() %>&status=Accepted" class="action-btn accept-btn">Accept</a>
                         <% } else { %>

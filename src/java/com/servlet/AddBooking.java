@@ -25,19 +25,19 @@ public class AddBooking extends HttpServlet {
         String end = req.getParameter("end");
         String about = req.getParameter("about");
         String amount = req.getParameter("amount");
+        String bookingDate = req.getParameter("bookingDate"); // New parameter
         
-        // Updated constructor to include driverPhoneNumber (null for new bookings)
-        Booking c = new Booking(name, email, address, phno, start, end, about, amount, userid, "Pending", null, null);
+        Booking c = new Booking(name, email, address, phno, start, end, about, amount, userid, "Pending", null, null, bookingDate);
         BookingDAO dao = new BookingDAO(DbConnect.getConn());
         
         HttpSession session = req.getSession();
         boolean f = dao.saveBooking(c);
         if (f) {
             session.setAttribute("succMsg", "Your Booking added Successfully..");
-            resp.sendRedirect("ManageBooking.jsp"); // Redirect to booking management page
+            resp.sendRedirect("ManageBooking.jsp");
         } else {
             session.setAttribute("failedMsg", "Your Booking Failed..");
-            resp.sendRedirect("AddBooking.jsp"); // Keep this if AddBooking.jsp exists
+            resp.sendRedirect("AddBooking.jsp");
         }
     }
 }

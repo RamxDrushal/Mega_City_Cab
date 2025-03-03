@@ -25,11 +25,11 @@ public class EditBooking extends HttpServlet {
         String end = req.getParameter("end");
         String about = req.getParameter("about");
         String amount = req.getParameter("amount");
+        String bookingDate = req.getParameter("bookingDate"); // New parameter
         
         BookingDAO dao = new BookingDAO(DbConnect.getConn());
         HttpSession session = req.getSession();
         
-        // Fetch existing booking to preserve fields not updated by user
         Booking existingBooking = dao.getContactById(cid);
         if (existingBooking == null) {
             session.setAttribute("failedMsg", "Booking not found..");
@@ -37,7 +37,6 @@ public class EditBooking extends HttpServlet {
             return;
         }
 
-        // Create updated booking object
         Booking c = new Booking();
         c.setId(cid);
         c.setName(name);
@@ -48,10 +47,11 @@ public class EditBooking extends HttpServlet {
         c.setEnd(end);
         c.setAbout(about);
         c.setAmount(amount);
-        c.setUserid(existingBooking.getUserid()); // Preserve existing userid
-        c.setStatus(existingBooking.getStatus()); // Preserve existing status
-        c.setDriverId(existingBooking.getDriverId()); // Preserve existing driverId
-        c.setDriverPhoneNumber(existingBooking.getDriverPhoneNumber()); // Preserve driver phone number
+        c.setUserid(existingBooking.getUserid());
+        c.setStatus(existingBooking.getStatus());
+        c.setDriverId(existingBooking.getDriverId());
+        c.setDriverPhoneNumber(existingBooking.getDriverPhoneNumber());
+        c.setBookingDate(bookingDate); // Set new field
         
         boolean f = dao.updateBooking(c);
         if (f) {

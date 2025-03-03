@@ -173,6 +173,10 @@
                                     <label for="phone">Enter Phone Number</label>
                                     <input value="<%=c.getPhno()%>" name="phno" type="text" class="form-control" id="phone">
                                 </div>
+                                <div class="form-group">
+                                <label for="bookingDate">Booking Date</label>
+                                <input value="<%=c.getBookingDate()%>" name="bookingDate" type="date" class="form-control" id="bookingDate" required>
+                            </div>
 
                                 <div class="form-group">
                                     <label for="startLocation">Trip Start Location</label>

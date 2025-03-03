@@ -291,6 +291,10 @@
                                     <label for="phone">Enter Phone Number</label>
                                     <input name="phno" type="text" class="form-control" id="phone">
                                 </div>
+                                <div class="form-group">
+                                    <label for="bookingDate">Booking Date</label>
+                                    <input name="bookingDate" type="date" class="form-control" id="bookingDate" required>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="startLocation">Trip Start Location</label>
