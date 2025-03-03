@@ -32,7 +32,7 @@
                 "Thalawathugoda": 23
             };
 
-            const ratePerDistance = 100; // LKR per distance unit
+            const ratePerDistance = 100; 
 
             function filterLocations() {
                 const start = document.getElementById("startLocation").value;
@@ -47,15 +47,15 @@
                 }
             }
 
-            // Form Validation
+            
             function validateForm() {
                 let isValid = true;
 
-                // Clear previous error messages
+               
                 const errorMessages = document.querySelectorAll('.error');
                 errorMessages.forEach(msg => msg.remove());
 
-                // Validate Name
+               
                 const name = document.getElementById("name").value;
                 if (!name) {
                     isValid = false;
@@ -66,7 +66,7 @@
                     nameField.after(errorMsg);
                 }
 
-                // Validate Email
+                
                 const email = document.getElementById("email").value;
                 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                 if (!email || !emailRegex.test(email)) {
@@ -78,7 +78,7 @@
                     emailField.after(errorMsg);
                 }
 
-                // Validate Phone Number (simple number check)
+                
                 const phone = document.getElementById("phone").value;
                 const phoneRegex = /^[0-9]{10}$/; 
                 if (!phone || !phoneRegex.test(phone)) {
@@ -90,7 +90,7 @@
                     phoneField.after(errorMsg);
                 }
 
-                // Validate Start Location and End Location
+                
                 const startLocation = document.getElementById("startLocation").value;
                 const endLocation = document.getElementById("endLocation").value;
                 if (!startLocation || !endLocation) {
@@ -125,14 +125,14 @@
             }
             
             .card {
-                background: rgba(255, 255, 255, 0.8); /* Light overlay for readability */
+                background: rgba(255, 255, 255, 0.8); 
                 border-radius: 15px;
                 box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
                 padding: 30px;
             }
             
             .card-body {
-                background: #ffffc2;/* Light yellow background for the form */
+                background: #ffffc2;
                 border-radius: 5px;
                 padding: 25px;
             }
@@ -191,10 +191,10 @@
                 margin-top: 5px;
             }
             .alert {
-                border-radius: 8px; /* Rounded corners for better design */
-                padding: 15px; /* Add more padding for better visibility */
+                border-radius: 8px; 
+                padding: 15px; 
                 font-weight: bold;
-                transition: opacity 0.5s ease-in-out; /* Smooth transition for fade-in/out effect */
+                transition: opacity 0.5s ease-in-out;
             }
 
             .alert-success {
@@ -210,17 +210,16 @@
             }
 
             .close {
-                font-size: 1.5rem; /* Make the close button larger */
+                font-size: 1.5rem;
                 color: #000;
                 opacity: 0.5;
                 transition: opacity 0.3s ease;
             }
 
             .close:hover {
-                opacity: 1; /* Close button opacity when hovered */
+                opacity: 1;
             }
 
-            /* Add fade-in effect */
             .alert.fade.show {
                 opacity: 1 !important;
             }
@@ -246,7 +245,6 @@
                                 String sucssMsg = (String) session.getAttribute("succMsg");
                                 String errorMsg = (String) session.getAttribute("failedMsg");
 
-                                // Display success message
                                 if (sucssMsg != null) { 
                             %>
                                 <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
@@ -270,7 +268,7 @@
                             session.removeAttribute("failedMsg");
                             }
                         %> 
-                            <!-- Booking Form -->
+
                             <form action="addBooking" method="post" onsubmit="return validateForm()">
                                 <% if (user != null) { %>
                                     <input type="hidden" value="<%= user.getID() %>" name="userid">

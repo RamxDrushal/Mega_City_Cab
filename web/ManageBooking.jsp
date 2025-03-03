@@ -8,6 +8,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My Cab Bookings</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <%@include file="component/allCss.jsp"%>
     <style type="text/css">
         body {
@@ -137,6 +138,10 @@
         .status-accepted {
             color: #27ae60;
         }
+        .btn-download {
+    background: #2980b9;
+    border: none;
+}
     </style>
 </head>
 <body>
@@ -191,27 +196,30 @@
                     }
             %>
             <div class="col-md-4">
-                <div class="booking-card">
-                    <h5><span class="route-icon">S</span> Start: <%= c.getStart() %></h5>
-                    <h5><span class="route-icon">E</span> End: <%= c.getEnd() %></h5>
-                    <p><strong>Name:</strong> <%= c.getName() %></p>
-                    <p><strong>Phone:</strong> <%= c.getPhno() %></p>
-                    <p><strong>Email:</strong> <%= c.getEmail() %></p>
-                    <p><strong>Address:</strong> <%= c.getAddress() %></p>
-                    <p><strong>About:</strong> <%= c.getAbout() %></p>
-                    <p><strong>Amount:</strong> LKR <%= c.getAmount() %></p>
-                    <p><strong>Booking Date:</strong> <%= c.getBookingDate() %></p>
-                    <p><strong>Status:</strong> <span class="status status-<%= c.getStatus().toLowerCase() %>"><%= c.getStatus() %></span></p>
-                    <% if ("Accepted".equals(c.getStatus())) { %>
-                        <p><strong>Driver:</strong> <%= driverName %></p>
-                        <p><strong>Driver Contact:</strong> <%= driverPhoneNumber %></p>
-                    <% } %>
-                    <div class="text-center mt-3">
-                        <a href="editbooking.jsp?cid=<%= c.getID() %>" class="btn btn-custom btn-edit text-white">Edit</a> 
-                        <a href="delete?cid=<%= c.getID() %>" class="btn btn-custom btn-delete text-white">Delete</a>
-                    </div>
-                </div>
-            </div>
+    <div class="booking-card">
+        <h5><span class="route-icon">S</span> Start: <%= c.getStart() %></h5>
+        <h5><span class="route-icon">E</span> End: <%= c.getEnd() %></h5>
+        <p><strong>Name:</strong> <%= c.getName() %></p>
+        <p><strong>Phone:</strong> <%= c.getPhno() %></p>
+        <p><strong>Email:</strong> <%= c.getEmail() %></p>
+        <p><strong>Address:</strong> <%= c.getAddress() %></p>
+        <p><strong>About:</strong> <%= c.getAbout() %></p>
+        <p><strong>Amount:</strong> LKR <%= c.getAmount() %></p>
+        <p><strong>Booking Date:</strong> <%= c.getBookingDate() %></p>
+        <p><strong>Status:</strong> <span class="status status-<%= c.getStatus().toLowerCase() %>"><%= c.getStatus() %></span></p>
+        <% if ("Accepted".equals(c.getStatus())) { %>
+            <p><strong>Driver:</strong> <%= driverName %></p>
+            <p><strong>Driver Contact:</strong> <%= driverPhoneNumber %></p>
+        <% } %>
+        <div class="text-center mt-3">
+            <a href="editbooking.jsp?cid=<%= c.getID() %>" class="btn btn-custom btn-edit text-white">Edit</a> 
+            <a href="delete?cid=<%= c.getID() %>" class="btn btn-custom btn-delete text-white">Delete</a>
+            <% if ("Accepted".equals(c.getStatus()) && !"Not Assigned".equals(driverName) && !"Not Available".equals(driverPhoneNumber)) { %>
+                <a href="GenerateBillServlet?cid=<%= c.getID() %>" class="btn btn-custom btn-download text-white">Download Bill</a>
+            <% } %>
+        </div>
+    </div>
+</div>
             <%
                 }
             }

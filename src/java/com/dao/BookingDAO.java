@@ -249,4 +249,32 @@ public class BookingDAO {
         String[] details = getDriverDetailsByDriverId(driverId);
         return details != null ? details[0] : null;
     }
+    
+    public Booking getBookingById(int id) {
+    Booking booking = null;
+    try {
+        String query = "SELECT * FROM booking WHERE id = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            booking = new Booking();
+            booking.setId(rs.getInt("id"));
+            booking.setStart(rs.getString("start"));
+            booking.setEnd(rs.getString("end"));
+            booking.setName(rs.getString("name"));
+            booking.setPhno(rs.getString("phno"));
+            booking.setEmail(rs.getString("email"));
+            booking.setAddress(rs.getString("address"));
+            booking.setAbout(rs.getString("about"));
+            booking.setAmount(rs.getString("amount"));
+            booking.setBookingDate(rs.getString("booking_date"));
+            booking.setStatus(rs.getString("status"));
+            booking.setDriverId(rs.getInt("driver_id"));
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return booking;
+}
 }
