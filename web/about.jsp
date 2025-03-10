@@ -157,7 +157,7 @@
             response.sendRedirect("login.jsp");
             }
         %>
-        <!-- About Us -->
+        
         <div class="about-home">
             <div class="about-inner-contect">
                 <div class="about-content">
@@ -215,7 +215,7 @@
             
         </section>
         <%@include file="component/footer.jsp" %>
-        <!-- About Us -->
+       
     </body>
     
 </html>

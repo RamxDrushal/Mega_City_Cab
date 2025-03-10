@@ -257,7 +257,6 @@
     <body>
         <%@include file="component/navbar.jsp" %>
 
-        <!-- home -->
         <section class="home" id="home">
             <div class="home-content">
                 <div class="home-text">
@@ -283,7 +282,7 @@
                 </div>
             </div>
         </section>
-        <!-- 2nd layout -->
+
         <section class="about" id="about">
             <div class="about-img">
                 <img src="img/about1.jpg">
@@ -311,7 +310,7 @@
             <a href="AddBooking.jsp" class="btn1">Book a Cab</a>
            </div>
         </section>
-        <!-- Services -->
+
         <section class="services" id="services">
             <div class="text-center">
                 <h5>Latest Services</h5>

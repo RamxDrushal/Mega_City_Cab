@@ -99,7 +99,7 @@ public class BookingDAO {
                 c.setUserid(rs.getInt(10));
                 c.setStatus(rs.getString(11));
                 c.setDriverId(rs.getObject(12) != null ? rs.getInt(12) : null);
-                c.setBookingDate(rs.getString(13)); // New field
+                c.setBookingDate(rs.getString(13)); 
                 if (c.getDriverId() != null) {
                     String[] driverDetails = getDriverDetailsByDriverId(c.getDriverId());
                     if (driverDetails != null) {
@@ -225,7 +225,6 @@ public class BookingDAO {
         return totalAmount;
     }
 
-    // Fetch driver details (name and phone number) by driver ID
     public String[] getDriverDetailsByDriverId(Integer driverId) {
         if (driverId == null) return null;
         String[] driverDetails = new String[2]; // [0] = name, [1] = phone number
@@ -244,7 +243,6 @@ public class BookingDAO {
         return driverDetails;
     }
 
-    // Single method for backward compatibility
     public String getDriverNameByDriverId(Integer driverId) {
         String[] details = getDriverDetailsByDriverId(driverId);
         return details != null ? details[0] : null;

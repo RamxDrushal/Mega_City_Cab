@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.PreparedStatement; // Added missing import
+import java.sql.PreparedStatement;
 
 @WebServlet("/DeleteDriverServlet")
 public class DeleteDriverServlet extends HttpServlet {
@@ -21,7 +21,7 @@ public class DeleteDriverServlet extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
 
-            // Reset driver_id in bookings before deleting the driver
+            
             BookingDAO bookingDao = new BookingDAO(DbConnect.getConn());
             String sql = "UPDATE booking SET driver_id = NULL WHERE driver_id = ?";
             PreparedStatement ps = DbConnect.getConn().prepareStatement(sql);
@@ -29,12 +29,12 @@ public class DeleteDriverServlet extends HttpServlet {
             int rowsUpdated = ps.executeUpdate();
             ps.close();
 
-            // Log the number of bookings updated for debugging
+            
             System.out.println("Updated " + rowsUpdated + " bookings by setting driver_id to NULL for driver ID: " + id);
 
-            // Now delete the driver
+            
             DriverDAO driverDao = new DriverDAO(DbConnect.getConn());
-            boolean driverDeleted = driverDao.deleteDriver(id); // Assuming deleteDriver returns a boolean
+            boolean driverDeleted = driverDao.deleteDriver(id); 
 
             if (driverDeleted) {
                 session.setAttribute("succMsg", "Driver Deleted Successfully..");

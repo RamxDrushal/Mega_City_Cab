@@ -81,7 +81,7 @@
                 "Thalawathugoda": 23
             };
 
-            const ratePerDistance = 100; // LKR per distance unit
+            const ratePerDistance = 100;
 
             function filterLocations() {
                 const start = document.getElementById("startLocation").value;
@@ -96,15 +96,12 @@
                 }
             }
 
-            // Form Validation
             function validateForm() {
                 let isValid = true;
 
-            // Clear previous error messages
             const errorMessages = document.querySelectorAll('.error');
             errorMessages.forEach(msg => msg.remove());
 
-            // Validate Start Location and End Location
             const startLocation = document.getElementById("startLocation").value;
             const endLocation = document.getElementById("endLocation").value;
     
@@ -148,7 +145,7 @@
                             session.removeAttribute("failedMsg");
                             }
                             %> 
-                            <!-- Booking Form -->
+                            
                             <form action="update" method="post" onsubmit="return validateForm()">
                                 <%  
                             int cid = Integer.parseInt(request.getParameter("cid"));

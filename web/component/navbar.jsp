@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* Navbar Styling */
+        
         .navbar {
             background-color: #1d1d1d;
             padding: 15px 0; 
@@ -45,7 +45,7 @@
             background-color: #f39c12;
         }
 
-        /* User Button */
+        
         .btn-success {
             background-color: #FFD700;
             border-color: #f39c12;
@@ -58,7 +58,7 @@
             border-color: #e67e22;
         }
 
-        /* Logout Button */
+       
         .btn-danger {
             background-color: #e74c3c;
             border-color: #e74c3c;
@@ -132,7 +132,7 @@
         </div>
     </div>
 </div>
-<!-- Logout Modal -->
+
 </nav>
 
 </body>

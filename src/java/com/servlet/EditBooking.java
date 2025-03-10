@@ -51,7 +51,7 @@ public class EditBooking extends HttpServlet {
         c.setStatus(existingBooking.getStatus());
         c.setDriverId(existingBooking.getDriverId());
         c.setDriverPhoneNumber(existingBooking.getDriverPhoneNumber());
-        c.setBookingDate(bookingDate); // Set new field
+        c.setBookingDate(bookingDate); 
         
         boolean f = dao.updateBooking(c);
         if (f) {

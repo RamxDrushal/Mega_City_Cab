@@ -36,14 +36,13 @@ public class UpdateBookingStatus extends HttpServlet {
                     resp.sendRedirect("adminManageBookings.jsp");
                     return;
                 }
-                // Fetch driver phone number when assigning a driver
+                
                 String[] driverDetails = dao.getDriverDetailsByDriverId(driverId);
                 if (driverDetails != null) {
                     driverPhoneNumber = driverDetails[1]; // Phone number
                 }
             }
 
-            // Fetch current booking to update it
             Booking booking = dao.getContactById(cid);
             if (booking == null) {
                 session.setAttribute("failedMsg", "Booking not found..");
@@ -51,7 +50,6 @@ public class UpdateBookingStatus extends HttpServlet {
                 return;
             }
 
-            // Update booking status and driver details
             boolean f = dao.updateBookingStatus(cid, status, driverId);
             if (f && driverId != null) {
                 booking.setDriverId(driverId);

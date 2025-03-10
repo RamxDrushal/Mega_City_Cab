@@ -15,24 +15,24 @@ import java.io.OutputStream;
 @WebServlet("/GenerateBillServlet")
 public class GenerateBillServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Set the response content type to PDF
+        
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=\"Booking_Bill_" + request.getParameter("cid") + ".pdf\"");
 
         try {
-            // Get the booking ID from the request
+            
             int bookingId = Integer.parseInt(request.getParameter("cid"));
             
-            // Fetch the booking details
+            
             BookingDAO dao = new BookingDAO(DbConnect.getConn());
-            Booking booking = dao.getBookingById(bookingId); // You'll need to implement this method in BookingDAO
+            Booking booking = dao.getBookingById(bookingId); 
 
             if (booking == null) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Booking not found");
                 return;
             }
 
-            // Fetch driver details
+            
             String driverName = "Not Assigned";
             String driverPhoneNumber = "Not Available";
             if ("Accepted".equals(booking.getStatus()) && booking.getDriverId() != null) {
@@ -43,15 +43,15 @@ public class GenerateBillServlet extends HttpServlet {
                 }
             }
 
-            // Create a new PDF document
+            
             Document document = new Document();
             OutputStream out = response.getOutputStream();
             PdfWriter.getInstance(document, out);
 
-            // Open the document
+            
             document.open();
 
-            // Add content to the PDF
+            
             document.add(new Paragraph("===== Cab Booking Bill ====="));
             document.add(new Paragraph(" "));
             document.add(new Paragraph("Booking ID: " + booking.getID()));
@@ -70,7 +70,7 @@ public class GenerateBillServlet extends HttpServlet {
             document.add(new Paragraph(" "));
             document.add(new Paragraph("Thank you for choosing our service!"));
 
-            // Close the document
+            
             document.close();
             out.close();
 

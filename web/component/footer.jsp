@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Ensure full height for the page */
+       
         html, body {
             height: 100%;
             margin: 0;
@@ -12,13 +12,13 @@
             flex-direction: column;
         }
 
-        /* Main content container */
+       
         .container {
             flex: 1;
             padding: 20px;
         }
 
-        /* Footer styling */
+       
         footer {
             background-color: #1c2331;
             color: white;

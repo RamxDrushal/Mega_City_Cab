@@ -25,7 +25,7 @@ public class AddBooking extends HttpServlet {
         String end = req.getParameter("end");
         String about = req.getParameter("about");
         String amount = req.getParameter("amount");
-        String bookingDate = req.getParameter("bookingDate"); // New parameter
+        String bookingDate = req.getParameter("bookingDate"); 
         
         Booking c = new Booking(name, email, address, phno, start, end, about, amount, userid, "Pending", null, null, bookingDate);
         BookingDAO dao = new BookingDAO(DbConnect.getConn());

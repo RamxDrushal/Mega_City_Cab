@@ -42,7 +42,7 @@ public class DriverDAO {
                 driver.setName(rs.getString("name"));
                 driver.setCarModel(rs.getString("car_model"));
                 driver.setVehicleNumber(rs.getString("vehicle_number"));
-                driver.setPhoneNumber(rs.getString("phone_number")); // New field
+                driver.setPhoneNumber(rs.getString("phone_number"));
                 drivers.add(driver);
             }
         } catch (Exception e) {
@@ -59,7 +59,7 @@ public class DriverDAO {
             ps.setString(1, driver.getName());
             ps.setString(2, driver.getCarModel());
             ps.setString(3, driver.getVehicleNumber());
-            ps.setString(4, driver.getPhoneNumber()); // New field
+            ps.setString(4, driver.getPhoneNumber()); 
             int i = ps.executeUpdate();
             if (i == 1) f = true;
         } catch (Exception e) {

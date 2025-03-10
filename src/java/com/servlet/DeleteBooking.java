@@ -22,7 +22,7 @@ public class DeleteBooking extends HttpServlet {
         boolean f = dao.deleteBookingById(cid);
         HttpSession session = req.getSession();
         if (f) {
-            session.setAttribute("succMsg", "Booking Deleted Successfully.."); // Fixed typo
+            session.setAttribute("succMsg", "Booking Deleted Successfully..");
             resp.sendRedirect("ManageBooking.jsp");
         } else {
             session.setAttribute("failedMsg", "Something wrong on server..");

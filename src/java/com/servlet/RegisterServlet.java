@@ -30,11 +30,11 @@ public class RegisterServlet extends HttpServlet {
             if(f){
                 session.setAttribute("sucssMsg", "User Registered Successfully.");
                 response.sendRedirect("rejister.jsp");
-                //System.out.println("User Register Sucessfully..");
+                
             }else {
                 session.setAttribute("errorMsg", "Something wrong on Server");
                 response.sendRedirect("rejister.jsp");
-                //System.out.println("Something wrong on server..");
+                
             }
         }
         

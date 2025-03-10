@@ -27,7 +27,7 @@
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             position: relative;
-            overflow-x: auto; /* Enable horizontal scrolling for the container */
+            overflow-x: auto;
         }
         .container::before {
             content: '';
@@ -52,7 +52,7 @@
         }
         table {
             width: 100%;
-            min-width: 1200px; /* Ensure the table has a minimum width to prevent column squeezing */
+            min-width: 1200px;
             border-collapse: collapse;
             margin-top: 30px;
             background: #fff;
@@ -63,7 +63,7 @@
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid #ddd;
-            white-space: nowrap; /* Prevent text wrapping in cells */
+            white-space: nowrap;
         }
         th {
             background: #ffca28;
@@ -106,7 +106,6 @@
         .status-accepted {
             color: #27ae60;
         }
-        /* Enhanced Driver Select Dropdown */
         .driver-select-container {
             position: relative;
             display: inline-block;
@@ -142,7 +141,6 @@
             font-size: 0.8em;
             pointer-events: none;
         }
-        /* Enhanced Assigned Driver Name Display */
         .assigned-driver {
             display: inline-block;
             margin-left: 5px;
@@ -239,7 +237,7 @@
         <td><%= c.getStart() %></td>
         <td><%= c.getEnd() %></td>
         <td>LKR <%= c.getAmount() %></td>
-        <td><%= c.getBookingDate() %></td> <!-- New column -->
+        <td><%= c.getBookingDate() %></td>
         <td><%= c.getAbout() %></td>
         <td><%= c.getUserid() %></td>
         <td>
