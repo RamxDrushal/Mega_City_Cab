@@ -5,7 +5,7 @@ public class driver {
     private String name;
     private String carModel;
     private String vehicleNumber;
-    private String phoneNumber; // New field
+    private String phoneNumber; 
 
     public driver() {
         super();
@@ -15,10 +15,9 @@ public class driver {
         this.name = name;
         this.carModel = carModel;
         this.vehicleNumber = vehicleNumber;
-        this.phoneNumber = phoneNumber; // Initialize new field
+        this.phoneNumber = phoneNumber; 
     }
 
-    // Getters and setters
     public int getId() {
         return id;
     }
@@ -54,7 +53,7 @@ public class driver {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
+    
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
