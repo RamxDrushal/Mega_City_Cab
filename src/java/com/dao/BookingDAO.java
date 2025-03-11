@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BookingDAO {
     private Connection conn;
 
@@ -34,7 +35,7 @@ public class BookingDAO {
             } else {
                 ps.setNull(11, java.sql.Types.INTEGER);
             }
-            ps.setString(12, c.getBookingDate()); // New field
+            ps.setString(12, c.getBookingDate());
             int i = ps.executeUpdate();
             if (i == 1) f = true;
         } catch (Exception e) {
@@ -166,7 +167,7 @@ public class BookingDAO {
             } else {
                 ps.setNull(10, java.sql.Types.INTEGER);
             }
-            ps.setString(11, c.getBookingDate()); // New field
+            ps.setString(11, c.getBookingDate()); 
             ps.setInt(12, c.getID());
             int i = ps.executeUpdate();
             if (i == 1) f = true;
