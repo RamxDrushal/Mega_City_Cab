@@ -153,7 +153,7 @@ public class BookingDAOTest {
     public void testGetAllContact_Successful() throws SQLException {
         System.out.println("Starting testGetAllContact_Successful...");
         Booking booking1 = new Booking("Ramosh Drushal", "ramshsamarawickrama@gmail.com", "11/A WA Peries Road Moratuwa", "0724011543", "Bambalapitiya", "Nugegoda", "Test Booking", "1200", 1, "Pending", null, null, "2025-03-15");
-        Booking booking2 = new Booking("Thanuja Frenando", "thanuja@gmail.com", "256 Temple Road Maharagama", "0754534124", "Bambalapitiya", "Dehiwala", "Test Booking2", "1000", 1, "Accepted", 1, null, "2025-03-13");
+        Booking booking2 = new Booking("Ramosh Drushal", "ramshsamarawickrama@gmail.com", "256 Temple Road Maharagama", "0754534124", "Bambalapitiya", "Dehiwala", "Test Booking2", "1000", 1, "Accepted", 1, null, "2025-03-13");
         bookingDAO.saveBooking(booking1);
         bookingDAO.saveBooking(booking2);
         System.out.println("Inserted 2 test bookings for user 1.");
@@ -163,7 +163,7 @@ public class BookingDAOTest {
         System.out.println("Number of bookings retrieved: " + bookings.size());
         assertEquals("Should return 2 bookings for user 1", 2, bookings.size());
         assertEquals("First booking name should match", "Ramosh Drushal", bookings.get(0).getName());
-        assertEquals("Second booking name should match", "Thanuja Frenando", bookings.get(1).getName());
+        assertEquals("Second booking name should match", "Ramosh Drushal", bookings.get(1).getName());
         System.out.println("testGetAllContact_Successful completed.");
     }
 
