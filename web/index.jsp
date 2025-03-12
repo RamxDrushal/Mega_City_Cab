@@ -330,7 +330,7 @@
                         <img src="img/s2.jpg">
                     </div>
                     <h3>Online Booking</h3>
-                    <p>We successfully cope with task of varying complexity, provide long-term guarantees and regularly master.We provide trusted Cab Service in the World</p>
+                    <p>Book your cab anytime, anywhere with real-time availability, flexible scheduling, and personalized options for a seamless ride-hailing experience</p>
                 </div>
                 
                 <div class="row">
@@ -338,7 +338,7 @@
                         <img src="img/s3.jpg">
                     </div>
                     <h3>City Transport</h3>
-                    <p>We successfully cope with task of varying complexity, provide long-term guarantees and regularly master.We provide trusted Cab Service in the World</p>
+                    <p>Navigate the city with confidence using our transport services, offering reliable pickups, optimized routes, and professional drivers available 24/7.</p>
                 </div> 
             </div>
         </section>

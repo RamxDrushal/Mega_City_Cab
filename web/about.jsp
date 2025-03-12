@@ -195,8 +195,8 @@
                                     <i class="fa fa-globe"></i>
                                     <h3>Vision</h3>
                                     <br>
-                                    <p>Our mission is simple: to make your journeys seamless and enjoyable, with a strong commitment to customer satisfaction at every step. 
-                                    Whether you're commuting to work, heading to the airport, or exploring the city, we ensure timely pickups, professional drivers, and a smooth ride every time.</p>
+                                    <p>Our vision is to redefine urban transport with a global network of reliable, tech-driven cab services, prioritizing sustainability, innovation, and customer satisfaction. 
+                                    Mega City Cab leads with eco-friendly vehicles, advanced booking technology, and a commitment to a greener, connected world.</p>
                                 </div>
                             </div>
                             <div class="about-col-md-4">
@@ -204,8 +204,8 @@
                                     <i class="fa fa-pencil"></i>
                                     <h3>Achievements</h3>
                                     <br>
-                                    <p>Our mission is simple: to make your journeys seamless and enjoyable, with a strong commitment to customer satisfaction at every step. 
-                                    Whether you're commuting to work, heading to the airport, or exploring the city, we ensure timely pickups, professional drivers, and a smooth ride every time.</p>
+                                    <p>Since inception, Mega City Cab has served 1M+ customers, achieving a 98% on-time rate, winning awards, and expanding to 50+ cities. 
+                                    Our eco-friendly fleet has reduced carbon emissions by 20% in three years, reinforcing our leadership in urban transportation.</p>
                                 </div>
                             </div>
                         </div>
