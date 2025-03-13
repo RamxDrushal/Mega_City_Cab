@@ -60,5 +60,5 @@ Mega_City_Cab is a web application designed to facilitate cab booking services. 
 
 1. **Clone the Repository**:
    ```bash
-   git clone <[repository-url](https://github.com/RamxDrushal/Mega_City_Cab.git)>
+   git clone <[(https://github.com/RamxDrushal/Mega_City_Cab.git)]>
    cd Mega_City_Cab
