@@ -12,7 +12,7 @@ Welcome to **Mega_City_Cab**, a web-based cab service application built using Ja
   - [User Side](#user-side)
   - [Admin Side](#admin-side)
 - [Technologies Used](#technologies-used)
--
+
 
 ---
 
