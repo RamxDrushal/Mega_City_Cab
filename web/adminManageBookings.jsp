@@ -216,7 +216,7 @@
                     <th>Start</th>
                     <th>End</th>
                     <th>Amount</th>
-                    <th>Booking Date</th> <!-- New column -->
+                    <th>Booking Date</th> 
                     <th>About</th>
                     <th>User ID</th>
                     <th>Status</th>

@@ -4,10 +4,7 @@
  */
 package com.entity;
 
-/**
- *
- * @author ramsh
- */
+
 public class User {
         private int id;
         private String name;

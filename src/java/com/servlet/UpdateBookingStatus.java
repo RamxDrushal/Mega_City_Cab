@@ -39,7 +39,7 @@ public class UpdateBookingStatus extends HttpServlet {
                 
                 String[] driverDetails = dao.getDriverDetailsByDriverId(driverId);
                 if (driverDetails != null) {
-                    driverPhoneNumber = driverDetails[1]; // Phone number
+                    driverPhoneNumber = driverDetails[1];
                 }
             }
 
@@ -54,7 +54,7 @@ public class UpdateBookingStatus extends HttpServlet {
             if (f && driverId != null) {
                 booking.setDriverId(driverId);
                 booking.setDriverPhoneNumber(driverPhoneNumber);
-                dao.updateBooking(booking); // Update booking with driver phone number
+                dao.updateBooking(booking); 
             }
             
             if (f) {
@@ -68,6 +68,6 @@ public class UpdateBookingStatus extends HttpServlet {
             e.printStackTrace();
             session.setAttribute("failedMsg", "Failed to Update Booking Status: " + e.getMessage());
         }
-        resp.sendRedirect("adminManageBookings.jsp"); // Fixed typo
+        resp.sendRedirect("adminManageBookings.jsp");
     }
 }

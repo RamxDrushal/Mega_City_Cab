@@ -182,7 +182,7 @@
                     isValid = /^[A-Za-z0-9-]{2,20}$/.test(value);
                     break;
                 case 'phoneNumber':
-                    isValid = /^[0-9]{10}$/.test(value); // 10-digit phone number
+                    isValid = /^[0-9]{10}$/.test(value); 
                     break;
             }
 

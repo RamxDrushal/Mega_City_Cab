@@ -108,7 +108,7 @@
             }
         }
 
-        body { /* Fixed the class selector to tag selector */
+        body { 
             background: linear-gradient(to bottom, #fff7e6, #ffe6b3); 
             min-height: 100vh;
             font-family: 'Segoe UI', sans-serif;

@@ -134,7 +134,7 @@ public class BookingDAO {
                 c.setUserid(rs.getInt(10));
                 c.setStatus(rs.getString(11));
                 c.setDriverId(rs.getObject(12) != null ? rs.getInt(12) : null);
-                c.setBookingDate(rs.getString(13)); // New field
+                c.setBookingDate(rs.getString(13)); 
                 if (c.getDriverId() != null) {
                     String[] driverDetails = getDriverDetailsByDriverId(c.getDriverId());
                     if (driverDetails != null) {
