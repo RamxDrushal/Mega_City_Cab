@@ -12,13 +12,7 @@ Welcome to **Mega_City_Cab**, a web-based cab service application built using Ja
   - [User Side](#user-side)
   - [Admin Side](#admin-side)
 - [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Database Setup](#database-setup)
-- [Running the Application](#running-the-application)
-- [Testing](#testing)
-- [Build Tool](#build-tool)
-- [Contributing](#contributing)
-- [License](#license)
+-
 
 ---
 
@@ -56,9 +50,3 @@ Mega_City_Cab is a web application designed to facilitate cab booking services. 
 
 ---
 
-## Installation
-
-1. **Clone the Repository**:
-   ```bash
-   git clone <[(https://github.com/RamxDrushal/Mega_City_Cab.git)]>
-   cd Mega_City_Cab
